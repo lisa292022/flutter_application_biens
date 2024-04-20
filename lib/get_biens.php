@@ -14,6 +14,8 @@ require_once('../class/reservation_class.php');
     //echo "connection";
     
     $sql = "SELECT * FROM biens";
+    $sql = "SELECT * FROM `biens` V, `communes` C WHERE V.Idcom = C.Idcom";
+    $sql = "SELECT * FROM `biens` B, `communes` C , `tarif` T WHERE B.Idcom = C.Idcom AND B.id_bien = T.id_bien";
     $stmt1=$code->Query($sql);
     
     while($row = $stmt1->fetch(PDO::FETCH_ASSOC)):
@@ -37,11 +39,11 @@ require_once('../class/reservation_class.php');
             
             
             $tableau_bien[$i]['title']=$unstmt['nom_bien'];
-            $tableau_bien[$i]['place']='Bayonne';
+            $tableau_bien[$i]['place']=$unstmt['nom_commune_postal'];
             $tableau_bien[$i]['distance']=2;
             $tableau_bien[$i]['review']=36;
             $tableau_bien[$i]['picture']='images/hotel_1.png';
-            $tableau_bien[$i]['price']='180';
+            $tableau_bien[$i]['price']=strval($unstmt['prix_loc']);
             
             $i=$i+1;  
         }
