@@ -7,7 +7,7 @@ const d_green3 = Color(0xFF54D3C2);
 final List hotelList = [
     {
       'title': 'Maison Santa',
-      'place': 'wembley, London',
+      'place': 'wembley, Londres',
       'distance': 2,
       'review': 36,
       'picture': 'images/hotel_1.png',
@@ -147,7 +147,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 Text(
-                  '\$' + hotelData['price'],
+                  '\€' + hotelData['price'],
                   style: GoogleFonts.nunito(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
@@ -177,7 +177,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                       size: 14.0,
                     ),
                     Text(
-                      hotelData['distance'].toString() + ' km to city',
+                      hotelData['distance'].toString() + ' km de la ville',
                       style: GoogleFonts.nunito(
                         fontSize: 14,
                         color: Colors.grey[500],
@@ -187,7 +187,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ],
                 ),
                 Text(
-                  'per night',
+                  'par nuit',
                   style: GoogleFonts.nunito(
                     fontSize: 14,
                     color: Colors.grey.shade800,

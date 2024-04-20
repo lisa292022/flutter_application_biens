@@ -58,7 +58,7 @@ class PeriodSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Depart',
+                  'Départ',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
@@ -70,7 +70,7 @@ class PeriodSection extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  'Month 12 Dec',
+                  'Mardi 12 Déc',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -88,7 +88,7 @@ class PeriodSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Return',
+                  'Retour',
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 16,
@@ -99,7 +99,7 @@ class PeriodSection extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  'Tues 22 Dec',
+                  'Mardi 22 Déc',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -229,7 +229,7 @@ class ValidateBookingSection extends StatelessWidget {
           groupValue: selectedRadio,
           selected: true,
           title: Text(
-            "Flexible with dates",
+            "Flexible avec les dates",
             style: new TextStyle(
               color: Colors.black,
               fontSize: 20.0,
@@ -242,7 +242,7 @@ class ValidateBookingSection extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             child: Text(
-              'Apply',
+              'Appliquer',
               style: TextStyle(fontSize: 17),
             ),
             style: ElevatedButton.styleFrom(
@@ -253,7 +253,7 @@ class ValidateBookingSection extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              print('Apply Booking');
+              print('Appliquer la réservation');
               Navigator.pop(context);
             },
           ),
