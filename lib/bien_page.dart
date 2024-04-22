@@ -232,7 +232,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 SizedBox(width: 20),
                 Text(
-                  hotelData['review'].toString() + ' reviews',
+                  hotelData['review'].toString() + ' commentaires',
                   style: GoogleFonts.nunito(
                     fontSize: 14,
                     color: Colors.grey[500],

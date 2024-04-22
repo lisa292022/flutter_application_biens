@@ -356,6 +356,7 @@ class HotelSection2 extends StatelessWidget {
       'review': 36,
       'picture': 'images/hotel_1.png',
       'price': '180',
+      'price2': '200',
     },
     {
       'title': 'Appartement Blue',
@@ -364,6 +365,7 @@ class HotelSection2 extends StatelessWidget {
       'review': 13,
       'picture': 'images/hotel_2.png',
       'price': '220',
+      'price2': '200',
     },
     {
       'title': 'Maison Cooly',
@@ -372,6 +374,7 @@ class HotelSection2 extends StatelessWidget {
       'review': 88,
       'picture': 'images/hotel_3.png',
       'price': '400',
+      'price2': '200',
     },
     {
       'title': 'Appartement Berat',
@@ -380,6 +383,7 @@ class HotelSection2 extends StatelessWidget {
       'review': 34,
       'picture': 'images/hotel_4.png',
       'price': '910',
+      'price2': '200',
     },
   ];
   @override
@@ -442,6 +446,7 @@ final List hotelList = [
       'review': 80,
       'picture': 'images/hotel1.jpg',
       'price': '180',
+      'price2': '200',
     },
     {
       'title': 'Appartement Blue',
@@ -450,6 +455,7 @@ final List hotelList = [
       'review': 80,
       'picture': 'images/hotel2.jpg',
       'price': '220',
+      'price2': '200',
     },
     {
       'title': 'Maison Cooly',
@@ -458,6 +464,7 @@ final List hotelList = [
       'review': 88,
       'picture': 'images/hotel_3.png',
       'price': '400',
+      'price2': '200',
     },
     {
       'title': 'Appartement Berat',
@@ -466,6 +473,7 @@ final List hotelList = [
       'review': 34,
       'picture': 'images/hotel_4.png',
       'price': '910',
+      'price2': '200',
     },
   ];
 
@@ -564,7 +572,7 @@ final List hotelList = [
                   ),
                 ),
                 Text(
-                  '\€' + hotelData['price'],
+                  '\€' + hotelData['price'] + '-' + hotelData['price2'],
                   style: GoogleFonts.nunito(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
@@ -649,7 +657,7 @@ final List hotelList = [
                 ),
                 SizedBox(width: 20),
                 Text(
-                  hotelData['review'].toString() + ' reviews',
+                  hotelData['review'].toString() + ' commentaires',
                   style: GoogleFonts.nunito(
                     fontSize: 14,
                     color: Colors.grey[500],
