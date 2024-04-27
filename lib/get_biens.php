@@ -54,6 +54,19 @@ require_once('../class/reservation_class.php');
             $tableau_bien[$i]['place']=$unstmt['nom_commune_postal'];
             $tableau_bien[$i]['distance']=2;
             $tableau_bien[$i]['picture']='images/hotel_1.png';
+            // recherche de la premiere photo
+            $sql4 = "SELECT * FROM photos WHERE id_bien =".$unstmt['id_bien'];
+            $stmt4=$code->Query($sql4);
+            if ($stmt4->rowCount()==0) {
+                $tableau_bien[$i]['picture']='images/hotel_1.png';
+            }
+            else
+            {
+                $row4=$stmt4->fetch(PDO::FETCH_ASSOC);
+                $tableau_bien[$i]['picture']='C:\XAMPP\htdocs\location_saisonniere_git\Location-de-biens-saisonniers-lisa\Location-de-biens-saisonniers\photo\\'.$row4['lien_photo'];
+                $tableau_bien[$i]['picture']='images//'.$row4['lien_photo'];
+
+            }
             $tableau_bien[$i]['id_bien']=$unstmt['id_bien'];
             
             $i=$i+1;  

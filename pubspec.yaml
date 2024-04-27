@@ -81,6 +81,8 @@ flutter:
   - images/hotel_2.png
   - images/hotel_3.png
   - images/hotel_4.png
+  - images/
+  - ../../../../XAMPP/htdocs/location_saisonniere_git/Location-de-biens-saisonniers-lisa/Location-de-biens-saisonniers/photo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
