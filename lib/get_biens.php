@@ -69,6 +69,13 @@ require_once('../class/reservation_class.php');
             }
             $tableau_bien[$i]['id_bien']=$unstmt['id_bien'];
             
+            $tableau_bien[$i]['lit']=strval($unstmt['nb_couchage']);
+            $tableau_bien[$i]['piece']=strval($unstmt['nb_piece']);
+            $tableau_bien[$i]['chambre']=strval($unstmt['nb_chambre']);
+            $tableau_bien[$i]['superficie']=strval($unstmt['superficie_bien']);
+            $tableau_bien[$i]['descriptif']=$unstmt['descriptif'];
+            $tableau_bien[$i]['rue']=$unstmt['rue_bien'];
+            
             $i=$i+1;  
         }
         echo json_encode($tableau_bien);
