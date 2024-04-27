@@ -1,30 +1,88 @@
+import 'package:application_biens/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'calendar_page.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 const d_green3 = Color(0xFF54D3C2);
 
 final List hotelList = [
     {
+      'id_bien': 2,
       'title': 'Maison Santa',
       'place': 'wembley, Londres',
       'distance': 2,
       'review': 36,
       'picture': 'images/hotel_1.png',
       'price': '180',
+      'price2': '180',
       'lit': 4,
       'piece': 5,
       'descriptif' : 'Doté d’un bain à remous, la maison Santa est situé à Ambronay. L’établissement se trouve à 600 mètres de Notre-Dame et dispose de connexion Wi-Fi gratuite dans les locaux.'
     }
 ];
 
+class Bien {
+  int id_bien;
+  String title;
+  String place;
+  int distance;
+  int review;
+  String picture;
+  int price;
+  int price2;
+  int lit;
+  int piece;
+  String descriptif;
+
+  Bien({
+  this.id_bien=0,
+  this.title="",
+  this.place="",
+  this.distance=0,
+  this.review=0,
+  this.picture="",
+  this.price=0,
+  this.price2=0,
+  this.lit=0,
+  this.piece=0,
+  this.descriptif=""
+});
+}
+
+
+Future<List> getUnseulbien(int id) async {
+ // 192.168.56.1 est l'adresse ipv4 récupéré en faisant ipconfig sour cmd
+
+  const String apiEndpoint = 'http://192.168.56.1/location_saisonniere_git/Location-de-biens-saisonniers-lisa/Location-de-biens-saisonniers/front/getBienFlutter.php?id=2'; 
+  final Uri url = Uri.parse(apiEndpoint);
+  final res = await http.post(url);
+  return json.decode(res.body);
+}
+
 class BienPage extends StatelessWidget {
+  //int id_bien;
+  //BienPage({this.id_bien}); 
+  final List hotelListBD1 = hotelListBDglobal;
+  //final Bien monBien= hotelListBDglobal.firstWhere((b) => b['id_bien'] == 2);
+  final Map hotelListBD2 = hotelListBDglobal.firstWhere((b) => b['id_bien'] == bienIdglobal);
+  //final List hotelListBD3 = getUnSeulbien(bienIdglobal);
+  //final List hotelListBD3 = (hotelListBDglobal.firstWhere((b) => b['id_bien'] == bienIdglobal)).toList();
+  //final List hotelListBD3 = hotelListBDglobal.firstWhere((b) => b['id_bien'] == bienIdglobal)[0];
+  int idbien=bienIdglobal;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(),
       body: Column(
-            children: hotelList.map((hotel) {
+        // ça marche
+        //            children: hotelListBD1.map((hotel) {
+        //      return BienCard(hotel);
+        //    }).toList(),
+        //hotelListBDglobal au lieu de hotelList
+                    children: hotelListBD1.map((hotel) {
               return BienCard(hotel);
             }).toList(),
           ),
@@ -140,14 +198,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  hotelData['title'],
+                  hotelData['title'] + hotelData['id_bien'].toString() + bienIdglobal.toString(),
                   style: GoogleFonts.nunito(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
                 Text(
-                  '\€' + hotelData['price'],
+                  '\€' + hotelData['price'] + '-' + hotelData['price2'],
                   style: GoogleFonts.nunito(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
