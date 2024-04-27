@@ -64,7 +64,7 @@ require_once('../class/reservation_class.php');
             {
                 $row4=$stmt4->fetch(PDO::FETCH_ASSOC);
                 $tableau_bien[$i]['picture']='C:\XAMPP\htdocs\location_saisonniere_git\Location-de-biens-saisonniers-lisa\Location-de-biens-saisonniers\photo\\'.$row4['lien_photo'];
-                $tableau_bien[$i]['picture']='images//'.$row4['lien_photo'];
+                $tableau_bien[$i]['picture']='images/'.$row4['lien_photo'];
 
             }
             $tableau_bien[$i]['id_bien']=$unstmt['id_bien'];
