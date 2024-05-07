@@ -63,25 +63,14 @@ Future<List> getUnseulbien(int id) async {
 }
 
 class BienPage extends StatelessWidget {
-  //int id_bien;
-  //BienPage({this.id_bien}); 
-  final List hotelListBD1 = hotelListBDglobal;
-  //final Bien monBien= hotelListBDglobal.firstWhere((b) => b['id_bien'] == 2);
-  final Map hotelListBD2 = hotelListBDglobal.firstWhere((b) => b['id_bien'] == bienIdglobal);
-  //final List hotelListBD3 = getUnSeulbien(bienIdglobal);
-  //final List hotelListBD3 = (hotelListBDglobal.firstWhere((b) => b['id_bien'] == bienIdglobal)).toList();
-  //final List hotelListBD3 = hotelListBDglobal.firstWhere((b) => b['id_bien'] == bienIdglobal)[0];
+  final List hotelListBD1 = hotelListUniqueBDglobal;
+  //final Map hotelListBD2 = hotelListBDglobal.firstWhere((b) => b['id_bien'] == bienIdglobal);
   int idbien=bienIdglobal;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(),
       body: Column(
-        // ça marche
-        //            children: hotelListBD1.map((hotel) {
-        //      return BienCard(hotel);
-        //    }).toList(),
-        //hotelListBDglobal au lieu de hotelList
                     children: hotelListBD1.map((hotel) {
               return BienCard(hotel);
             }).toList(),
@@ -117,7 +106,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
-      height: 560,
+      height: 600,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -199,7 +188,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  hotelData['title'] + hotelData['id_bien'].toString() + bienIdglobal.toString(),
+                  hotelData['title'],
                   style: GoogleFonts.nunito(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,

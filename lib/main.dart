@@ -13,6 +13,7 @@ const d_blue = Color.fromARGB(255, 145, 184, 242);
 const d_green = Color(0xFF54D3C2);
 
 var hotelListBDglobal;
+var hotelListUniqueBDglobal;
 var bienIdglobal;
 
 Future<void> main(List<String> arguments) async {
@@ -295,11 +296,6 @@ Future<List> getUnseulbien(int id) async {
 }
 
 class HotelSection extends StatelessWidget {
-
-//final List hotelListBD = [{"title":"Maison Santa","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Maison Le Vieux Port ","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Appartement Chouki","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Maison ","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Appart H\u00f4tel Bellevue\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Appartements lumineux, quartier Bonnefoy\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Maison Hyper Centre Brive","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Appartement centre-ville avec terrasse\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"2 Paris apartment Eiffel - your home in Paris view & large terrace\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Le Petit Pavillon de Versailles\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"La Casa Boh\u00e8me - Superbe maison avec parking priv\u00e9\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Coup de C\u0153ur assur\u00e9 pour ce T2 r\u00e9nov\u00e9 Hyper centre\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Villa Le Mauret\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"G\u00eete Jullianges, 3 pi\u00e8ces, 5 personnes - FR-1-582-214\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"VILLA GABY - Rare 6 Personnes - Localisation Id\u00e9ale\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"La Maison aux murs anciens et ses chambres\r\n","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Maison des roses","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"yohan","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"Test","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"},{"title":"fgh","place":"Bayonne","distance":2,"review":36,"picture":"images\/hotel_1.png","price":"180"}];
-//Future<List> listehotelListBD = getbiens();
-
-//List hotelListBD = await  listehotelListBD;
 final List hotelListBD = hotelListBDglobal;
 @override
   Widget build(BuildContext context) {
@@ -554,12 +550,15 @@ final List hotelList = [
                       MaterialPageRoute(
                         builder: (context) {
                           // affiche bien
-                          //var monBienPage = BienPage(hotelData['id_bien']);
                           bienIdglobal=hotelData['id_bien'];
-
-                          /*Future<List> listehotelListBD2 = getUnSeulbien(bienIdglobal);
-                          final List hotelListBDmain2 = await  listehotelListBD2;
-                          hotelListBDglobal = hotelListBDmain2;*/
+                          final List hotelListUnique = [] ;
+                          for(var i = 0; i < hotelListBDglobal.length; i++)
+                          {
+                            if (hotelListBDglobal[i]['id_bien'] == bienIdglobal) {
+                              hotelListUnique.add(hotelListBDglobal[i]);
+                            }
+                          }
+                          hotelListUniqueBDglobal = hotelListUnique;
                           return BienPage();
                         },
                       ),
