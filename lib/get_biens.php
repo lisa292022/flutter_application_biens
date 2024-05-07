@@ -13,16 +13,17 @@ require_once('../class/reservation_class.php');
     }
     //echo "connection";
     
+    // sélection d'un bien ou de tous les biens
+    $sql = "SELECT * FROM `biens` V, `communes` C WHERE V.Idcom = C.Idcom";
     if(isset($_POST['id'])){
         $id_bien = $_POST['id'];
+        $sql = "SELECT * FROM `biens` V, `communes` C WHERE V.Idcom = C.Idcom and V.id_bien=".$id_bien;
     }
     if(isset($_GET['id'])){
         $id_bien = $_GET['id'];
+        $sql = "SELECT * FROM `biens` V, `communes` C WHERE V.Idcom = C.Idcom and V.id_bien=".$id_bien;
     }
     
-    $sql = "SELECT * FROM biens";
-    $sql = "SELECT * FROM `biens` V, `communes` C WHERE V.Idcom = C.Idcom and V.Idbien=".$id_bien;
-    //$sql = "SELECT * FROM `biens` B, `communes` C , `tarif` T WHERE B.Idcom = C.Idcom AND B.id_bien = T.id_bien";
     $stmt1=$code->Query($sql);
     
     while($row = $stmt1->fetch(PDO::FETCH_ASSOC)):
@@ -44,10 +45,23 @@ require_once('../class/reservation_class.php');
         foreach ($stmt as $unstmt ) {
             
             // recherche nombre de commentaire
-            $sql2 = "SELECT COUNT(commentaire) AS nb_commentaire FROM reservation WHERE id_bien =".$unstmt['id_bien'];
+            $sql2 = "SELECT COUNT(commentaire) AS nb_commentaire FROM reservation WHERE commentaire != '' and id_bien =".$unstmt['id_bien'];
             $stmt2=$code->Query($sql2);
             $row2=$stmt2->fetch(PDO::FETCH_ASSOC);
             $tableau_bien[$i]['review']=$row2['nb_commentaire'];
+            // recheche des commentaires
+            $sql21 = "SELECT * FROM reservation WHERE id_bien =".$unstmt['id_bien'];
+            $stmt21=$code->Query($sql21);
+            if($stmt21->rowCount() != 0) {
+                $tableau_bien[$i]['commentaire']="";
+                while($row21 = $stmt21->fetch(PDO::FETCH_ASSOC)):
+                    $tableau_bien[$i]['commentaire']= $tableau_bien[$i]['commentaire']." ".$row21['commentaire'];
+                endwhile; 
+            }
+            else
+            {
+               $tableau_bien[$i]['commentaire']=""; 
+            }
             
             // recherche des 2 tarifs
             $sql3 = "SELECT prix_loc FROM tarif WHERE id_bien =".$unstmt['id_bien'];
