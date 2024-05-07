@@ -310,7 +310,7 @@ final List hotelListBD = hotelListBDglobal;
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '4 biens trouvés',
+                  hotelListBD.length.toString() + ' biens trouvés',
                   style: GoogleFonts.nunito(
                     color: Colors.black,
                     fontSize: 15,
