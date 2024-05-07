@@ -117,7 +117,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
-      height: 360,
+      height: 560,
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -188,7 +188,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                       size: 20,
                     ),
                   ),
-                )
+                ),
+               
               ],
             ),
           ),
@@ -327,6 +328,34 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
+                Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          width: double.infinity,
+          child: ElevatedButton(
+            child: Text(
+              'Réserver',
+              style: TextStyle(fontSize: 17),
+            ),
+            style: ElevatedButton.styleFrom(
+              //primary: d_green2,
+              padding: EdgeInsets.all(15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+            ),
+            onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          // affiche bien
+                          return CalendarPage();
+                        },
+                      ),
+                    );
+                  },
+          ),
+        ),  
         ],
       ),
     );
