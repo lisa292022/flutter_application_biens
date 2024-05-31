@@ -63,6 +63,24 @@ require_once('../class/reservation_class.php');
                $tableau_bien[$i]['commentaire']=""; 
             }
             
+            
+            // recheche d'activités
+            $sql51 = "SELECT description FROM activite INNER JOIN possede ON activite.id_activite = possede.id_activite  WHERE possede.id_bien =".$unstmt['id_bien'];
+            //$sql51 = "SELECT * FROM possede WHERE id_bien =".$unstmt['id_bien'];
+            $stmt51=$code->Query($sql51);
+            if($stmt51->rowCount() != 0) {
+                $tableau_bien[$i]['activite']="";
+                while($row51 = $stmt51->fetch(PDO::FETCH_ASSOC)):
+                    $tableau_bien[$i]['activite']= $tableau_bien[$i]['activite']." ".$row51['description'];
+                endwhile; 
+            }
+            else
+            {
+               $tableau_bien[$i]['activite']=""; 
+            }
+            
+            
+            
             // recherche des 2 tarifs
             $sql3 = "SELECT prix_loc FROM tarif WHERE id_bien =".$unstmt['id_bien'];
             $stmt3=$code->Query($sql3);

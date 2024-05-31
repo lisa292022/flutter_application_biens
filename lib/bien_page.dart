@@ -325,6 +325,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
+          Text(
+                  "Activités: " + hotelData['activite'],
+                  style: GoogleFonts.nunito(
+                    fontSize: 14,
+                    color: Colors.grey[500],
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),      
           Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
           width: double.infinity,
